@@ -1,5 +1,24 @@
 ---
+import '../styles/global.css';
 
+const pageTitle = "关于我";
+
+const identity = {
+    Name: "Xin",
+    country: "China",
+    occupation: "学生",
+    hobbies: ["摄影", "动漫", "羽毛球"],
+};
+
+const skills = ["HTML", "CSS", "JavaScript", "Astro"];
+
+const happy = true;
+const finished = false;
+const goal = 3;
+
+const skillColor = "crimson";
+const fontweight = "bold";
+const textCase = "uppercase";
 ---
 
 <html lang="en">
@@ -8,14 +27,34 @@
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
-        <title>我的 Astro 网站</title>
+        <!-- # 原始HTML中的静态标题 -->
+        <!-- <title>我的 Astro 网站</title> -->
+        <!-- # 使用动态变量 pageTitle 设置标题 -->
+        <title>{pageTitle}</title>
+        <style define:vars={{ skillColor, fontweight, textCase }}>
+            h1 {
+                color: rgb(5, 30, 255);
+                font-size: 4rem;
+            }
+            h2 {
+                color: rgb(5, 226, 255);
+            }
+            /* 在 CSS 中，. 开头的叫类选择器。 */
+            .skill {
+                color: var(--skillColor);
+                font-weight: var(--fontweight);
+                text-transform: var(--textCase);
+            }
+            /* 以上代码的意思是：找到所有 class="skill" 的 HTML 元素，给它们应用这些样式。 */
+            /* 简单来说：class="skill" 是"贴标签"，.skill 是"找标签并涂色"。 */
+        </style>
     </head>
     <body>
         <a href="/">首页</a>
         <a href="/about/">关于</a>
         <a href="/blog/">博客</a>
 
-        <h1>关于我</h1>
+        <h1>{pageTitle}</h1>
         <h2>……和我的新 Blog 网站！</h2>
 
         <p>
@@ -26,5 +65,35 @@
         <p>
             随着我完成更多教程，该站点将更新，所以请继续查看我的旅程将如何进行吧！
         </p>
+        <p>以下是关于我的事实：</p>
+        <ul>
+            <li>我的名字是: {identity.Name}。</li>
+            <li>
+                我住在: {identity.country}。我的职业是: {identity.occupation}。
+            </li>
+            <li>
+                我的两个爱好是：{identity.hobbies[0]} 和 {identity.hobbies[1]}。
+            </li>
+        </ul>
+        <p>我正在学习以下技能：</p>
+        <ul>
+            {skills.map((skill) => <li class="skill">{skill}</li>)}
+        </ul>
+
+        <p>我正在做的事：</p>
+        <ul>
+            <li>{happy && <p>我非常乐意学习 Astro！</p>}</li>
+            <li>{finished && <p>我完成了这节教程！</p>}</li>
+            <li>
+                {
+                    goal === 3 ? (
+                        <p>我的目标是在三天内完成。</p>
+                    ) : (
+                        <p>我的目标不是 3 天。</p>
+                    )
+                }
+            </li>
+            <!-- goal是否等于 3 ，等于则选择第一项，不等于则选择第二项 -->
+        </ul>
     </body>
 </html>
