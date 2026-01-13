@@ -1,0 +1,23 @@
+---
+// 组件通过 Astro.props 接收外部传入的参数，这样同一个组件可以根据不同的参数生成不同的内容。
+const { platform, username } = Astro.props;
+---
+
+<!-- 这里的<platform>就是在链接在网页上的显示内容，相当于把这串链接用<platform>这个文本显示出来 -->
+<a href={`https://www.${platform}.com/${username}`}>{platform}</a>
+
+<style>
+    a {
+        color: blue;
+        text-decoration: none;
+    }
+    a:hover {
+        /* 1px (宽度)：线条的粗细为 1 像素。 solid (样式)：线条为实线。*/
+        border-bottom: 1px solid;
+        /* 去掉 HTML 链接默认的下划线。 */
+        text-decoration: none;
+    }
+    a:active {
+        color: red;
+    }
+</style>

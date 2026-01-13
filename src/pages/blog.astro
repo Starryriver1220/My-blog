@@ -1,4 +1,7 @@
 ---
+import Navigation from "../components/Navigation.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 import "../styles/global.css";
 
 const pageTitle = "我的博客";
@@ -15,9 +18,9 @@ const pageTitle = "我的博客";
              在你的 Astro 模板中使用这些大括号内的变量来告诉 Astro 你正在使用一些 JavaScript。 -->
     </head>
     <body>
-        <a href="/">首页</a>
-        <a href="/about/">关于</a>
-        <a href="/blog/">博客</a>
+        <!-- 导航组件 -->
+        <!-- <Navigation /> -->
+        <Header />
 
         <h1>{pageTitle}</h1>
         <p>在这里，我将分享我的 Astro 学习之旅。</p>
@@ -37,5 +40,7 @@ const pageTitle = "我的博客";
             <li><a href="/posts/post-2/">文章 2</a></li>
             <li><a href="/posts/post-3/">文章 3</a></li>
         </ul>
+        <!-- 页脚组件 -->
+        <Footer />
     </body>
 </html>

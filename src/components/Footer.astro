@@ -1,0 +1,44 @@
+---
+import Social from "../components/Social.astro";
+// const platform = ["github", "instagram"];
+// const username = "withastro";
+// const username1 = ["Starryriver1220", "xinhe_1220"];
+---
+
+<style>
+    footer {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+</style>
+
+<!-- <footer>是 HTML 语义标签，用来表示页面的不同结构区域。 -->
+<!-- <footer>	位置：页面底部	用途：版权信息、联系方式、社交媒体链接等 -->
+<footer>
+    <!-- <p>
+        用反引号和 ${} 在字符串中插入变量，自动拼接成完整的 URL。
+        在 <a href={`https://www.${platform[0]}.com/${username}`}
+            >{platform[0]}</a
+        > 上，了解有关我的项目的更多信息！
+    </p> -->
+    <!-- <p>
+        在 <a href={`https://www.${platform[1]}.com/${username1[1]}`}
+            >{platform[1]}</a
+        > 上，我将分享我的拍摄照片，尼康，感动常在——I AM WHATEVER IT TAKES.
+    </p> -->
+    <p>
+        在<Social
+            platform="github"
+            username="withastro"
+        />上，了解有关我的项目的更多信息！
+    </p>
+    <p>
+        在<Social
+            platform="instagram"
+            username="xinhe_1220"
+        />上，我将分享我的拍摄照片。
+        <!-- <br /> 是换行标签，放在哪里就在那里换行。 -->
+        <br />尼康，感动常在——I AM WHATEVER IT TAKES.
+    </p>
+</footer>
