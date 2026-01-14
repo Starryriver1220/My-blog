@@ -1,0 +1,75 @@
+---
+// 导入组件并给它起个名字 Navigation
+// 你需要在 HTML 中使用这个组件：<Navigation />
+// 所以必须给它起个名字 Navigation，这样才能在 HTML 中引用
+// import Navigation from "../components/Navigation.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+// 直接导入，不需要名字
+// 你只是想加载样式文件，让网页有样式
+// 不需要在 HTML 中使用它，所以不用起名字
+import "../styles/global.css";
+
+// 从父组件接收数据，如果没有收到 pageType，就用 "default" 作为默认值
+// const { pageTitle, pageType = "default" } = Astro.props;
+const { pageTitle } = Astro.props;
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{pageTitle}</title>
+        <!-- 在你的 Astro 脚本中使用 JavaScript 或 TypeScript 表达式定义变量。
+             在你的 Astro 模板中使用这些大括号内的变量来告诉 Astro 你正在使用一些 JavaScript。 -->
+        <!-- <style>
+            h1.about-title {
+                color: rgb(5, 30, 255);
+                font-size: 4rem;
+            }
+        </style> -->
+    </head>
+    <body>
+        <!-- 导航组件 -->
+        <!-- <Navigation /> -->
+        <Header />
+
+        <!-- <h1>Astro</h1> # 这就是网页编辑的内容 -->
+        <h1>{pageTitle}</h1>
+
+        <!-- 根据 pageType 添加不同的类名 -->
+        <!-- pageType === "about"   检查 pageType 是否等于 "about"；
+                                ?	如果是（true）；
+                    "about-title"	就添加这个类名；
+                                :	否则（false）；
+                               ""	就添加空类名（什么都不加）；
+            简单说： 这是一个三元运算符（if/else 的简写） -->
+        <!-- <h1 class={pageType === "about" ? "about-title" : ""}>{pageTitle}</h1> -->
+
+        <!-- <slot /> 允许你将写在开放和闭合 <Component></Component> 标签之间的子内容注入（或者说是「插入」）到任何 Component.astro 文件中。 -->
+        <slot />
+
+        <!-- 页脚组件 -->
+        <Footer />
+
+        <!-- 添加一个 <script> 标签提供客户端 JavaScript，以「监听」用户事件并做出相应的响应。
+		<script>
+			const menu = document.querySelector(".menu");
+
+			menu?.addEventListener("click", () => {
+				const isExpanded =
+					menu.getAttribute("aria-expanded") === "true";
+				menu.setAttribute("aria-expanded", `${!isExpanded}`);
+			});
+		</script> -->
+        <script>
+            import "../scripts/menu.js";
+        </script>
+    </body>
+</html>
+
+<!-- HTML：网页的骨架（页面结构），例如：<header>、<h1>、<p>、<a> 等标签，可以在markdown中找到更多信息
+CSS：网页的皮肤和衣服（外观样式），例如：颜色、字体、布局等，可以在 global.css 中找到更多信息
+JavaScript：网页的大脑（交互和动作），例如：点击、悬停、表单验证等交互行为 -->

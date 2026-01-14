@@ -20,14 +20,29 @@ h1 {
     font-size: 2.5rem;
 }
 
-/* 导航样式 */
+/* 菜单样式 */
+.menu {
+    background-color: #0d0950;
+    border: none;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 5px 10px;
+}
+.menu:hover,
+.menu:focus {
+    background-color: #ff9776;
+}
 
+/* 导航样式 */
+/* 基础导航样式 */
 .nav-links {
     width: 100%;
+    /* 初始状态下隐藏导航（在手机上） */
     display: none;
     margin: 0;
 }
-
+/* 链接样式 */
 .nav-links a {
     display: block;
     text-align: center;
@@ -44,6 +59,16 @@ h1 {
     background-color: #ff9776;
 }
 
+/* :has(...)："如果包含..." 的意思;
+.menu：菜单按钮（☰ 汉堡菜单）;
+[aria-expanded="true"]：菜单按钮被打开状态;
+.nav-links：导航链接容器;
+display: unset：取消隐藏，显示导航 */
+:has(.menu[aria-expanded="true"]) .nav-links {
+    display: unset;
+}
+
+/* @media 是响应式设计的关键！ 它根据屏幕宽度应用不同的样式：当屏幕宽度 ≥ 636px 时，下面的样式才生效 */
 @media screen and (min-width: 636px) {
     .nav-links {
         margin-left: 5em;
@@ -56,5 +81,10 @@ h1 {
     .nav-links a {
         display: inline-block;
         padding: 15px 20px;
+    }
+
+    /* 不显示菜单 */
+    .menu {
+        display: none;
     }
 }

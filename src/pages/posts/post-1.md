@@ -1,4 +1,6 @@
 ---
+# ../：表示上升一级文件夹；../../：表示上升两级文件夹，这里表示到达src文件夹
+layout: ../../layouts/MarkdownPostLayout.astro
 title: '我的第一篇博客文章'
 pubDate: 2026-01-13
 description: '这是我博客的第一篇文章。'

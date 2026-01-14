@@ -1,30 +1,16 @@
 ---
-import Navigation from "../components/Navigation.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+// import Navigation from "../components/Navigation.astro";
+// import Header from "../components/Header.astro";
+// import Footer from "../components/Footer.astro";
 import "../styles/global.css";
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 const pageTitle = "我的博客";
 ---
 
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <meta name="viewport" content="width=device-width" />
-        <meta name="generator" content={Astro.generator} />
-        <title>{pageTitle}</title>
-        <!-- 在你的 Astro 脚本中使用 JavaScript 或 TypeScript 表达式定义变量。
-             在你的 Astro 模板中使用这些大括号内的变量来告诉 Astro 你正在使用一些 JavaScript。 -->
-    </head>
-    <body>
-        <!-- 导航组件 -->
-        <!-- <Navigation /> -->
-        <Header />
-
-        <h1>{pageTitle}</h1>
-        <p>在这里，我将分享我的 Astro 学习之旅。</p>
-        <!-- /**
+<BaseLayout pageTitle={pageTitle}>
+    <p>在这里，我将分享我的 Astro 学习之旅。</p>
+    <!-- /**
          * 博客文章列表
          * 
          * 使用无序列表 <ul> 展示博客文章链接
@@ -35,12 +21,9 @@ const pageTitle = "我的博客";
          * - 创建可点击的超链接，用户点击"文章 1"文本会导航到指定路径
          * - 允许用户在网站中浏览不同页面
          */ -->
-        <ul>
-            <li><a href="/posts/post-1/">文章 1</a></li>
-            <li><a href="/posts/post-2/">文章 2</a></li>
-            <li><a href="/posts/post-3/">文章 3</a></li>
-        </ul>
-        <!-- 页脚组件 -->
-        <Footer />
-    </body>
-</html>
+    <ul>
+        <li><a href="/posts/post-1/">文章 1</a></li>
+        <li><a href="/posts/post-2/">文章 2</a></li>
+        <li><a href="/posts/post-3/">文章 3</a></li>
+    </ul>
+</BaseLayout>
