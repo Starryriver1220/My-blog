@@ -6,13 +6,11 @@ pubDate: 2026-01-13
 description: '这是我博客的第一篇文章。'
 author: 'Astro 学习者'
 image:
-    url: 'https://docs.astro.build/assets/rose.webp'
-    alt: 'The Astro logo on a dark background with a pink glow.'
+    url: '../../assets/桌面.jpg'
+    alt: 'background'
 tags: ["astro", "blogging", "learning in public"]
 ---
 <!-- 文件顶部的信息，在代码块内，称为 frontmatter。此数据（包括标签和文章图像）是 Astro 可以使用的有关你的文章的信息它不会自动出现在页面上，但你稍后会在教程中了解它的作用。 -->
-
-# 我的第一篇博客文章
 
  发表于：2026-01-13
 
